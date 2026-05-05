@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account - FabVision AI</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #1a1a1a;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px 32px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .logo h1 {
+            color: #0D8B7D;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .logo .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        h2 {
+            color: #0C1B2A;
+            font-size: 22px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .warning-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 14px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #92400E;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+        
+        .phone-input-row {
+            display: flex;
+            gap: 8px;
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        
+        select { width: 100px; flex-shrink: 0; }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #0D8B7D;
+            box-shadow: 0 0 0 3px rgba(13,139,125,0.1);
+        }
+        
+        textarea { resize: vertical; min-height: 70px; }
+        
+        .otp-input {
+            text-align: center;
+            font-size: 22px;
+            letter-spacing: 6px;
+            font-weight: 600;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 14px;
+            background: #FEF2F2;
+            border-radius: 8px;
+            border-left: 4px solid #DC2626;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        
+        .checkbox-group label {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #7F1D1D;
+            cursor: pointer;
+            margin: 0;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        
+        button:disabled {
+            background: #D1D5DB !important;
+            color: #6B7280 !important;
+            cursor: not-allowed;
+        }
+        
+        .btn-primary {
+            background: #0D8B7D;
+            color: white;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            background: #0a6e63;
+        }
+        
+        .btn-danger {
+            background: #DC2626;
+            color: white;
+        }
+        
+        .btn-danger:hover:not(:disabled) {
+            background: #B91C1C;
+        }
+        
+        .btn-link {
+            background: transparent;
+            color: #0D8B7D;
+            font-size: 14px;
+            padding: 8px;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+        
+        .btn-link:disabled {
+            background: transparent !important;
+            color: #9CA3AF !important;
+        }
+        
+        .otp-info {
+            text-align: center;
+            font-size: 14px;
+            color: #4B5563;
+            margin-bottom: 16px;
+        }
+        
+        .otp-info strong { color: #0C1B2A; }
+        
+        .error-message {
+            background: #FEE2E2;
+            color: #991B1B;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 16px;
+            border-left: 4px solid #DC2626;
+            display: none;
+        }
+        
+        .success-screen {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background: #D1FAE5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: #065F46;
+        }
+        
+        .success-screen h2 {
+            color: #065F46;
+            margin-bottom: 12px;
+        }
+        
+        .success-screen p {
+            color: #4B5563;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .footer-link {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 13px;
+            color: #6B7280;
+        }
+        
+        .footer-link a { color: #0D8B7D; text-decoration: none; }
+        
+        .hidden { display: none !important; }
+        
+        .loading-text { font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <h1>FabVision AI</h1>
+            <div class="subtitle">Delete Account</div>
+        </div>
+        
+        <!-- STEP 1: Phone entry -->
+        <div id="step-phone">
+            <h2>Delete Your Account</h2>
+            <p class="description">
+                We're sorry to see you go. Enter your registered phone number 
+                to receive a verification OTP.
+            </p>
+            
+            <div class="warning-box">
+                ⚠️ <strong>This action cannot be undone.</strong> All your fabrics, 
+                generated photos, videos, AI faces, and credit history will be 
+                permanently deleted.
+            </div>
+            
+            <div class="error-message" id="phone-error"></div>
+            
+            <div class="form-group">
+                <label for="phone">Registered Phone Number</label>
+                <div class="phone-input-row">
+                    <select id="country-code">
+                        <option value="+91" selected>🇮🇳 +91</option>
+                        <option value="+1">🇺🇸 +1</option>
+                        <option value="+44">🇬🇧 +44</option>
+                        <option value="+971">🇦🇪 +971</option>
+                    </select>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        placeholder="9876543210" 
+                        maxlength="15"
+                        autocomplete="tel"
+                    >
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="reason">Reason for leaving (optional)</label>
+                <textarea 
+                    id="reason" 
+                    placeholder="Help us improve. What can we do better?"
+                    maxlength="500"
+                ></textarea>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="confirm-checkbox">
+                <label for="confirm-checkbox">
+                    I understand my account, fabrics, generated content, and 
+                    all data will be permanently deleted. This action cannot 
+                    be undone.
+                </label>
+            </div>
+            
+            <button class="btn-primary" id="send-otp-btn" disabled>
+                Send Verification OTP
+            </button>
+        </div>
+        
+        <!-- STEP 2: OTP verification -->
+        <div id="step-otp" class="hidden">
+            <h2>Verify OTP</h2>
+            <p class="description">
+                Enter the 6-digit code sent to your phone.
+            </p>
+            
+            <div class="otp-info">
+                OTP sent to <strong id="display-phone"></strong>
+            </div>
+            
+            <div class="error-message" id="otp-error"></div>
+            
+            <div class="form-group">
+                <label for="otp">Enter OTP</label>
+                <input 
+                    type="tel" 
+                    id="otp" 
+                    class="otp-input"
+                    placeholder="000000"
+                    maxlength="6"
+                    inputmode="numeric"
+                    autocomplete="one-time-code"
+                >
+            </div>
+            
+            <button class="btn-danger" id="verify-otp-btn">
+                Verify & Delete Account Permanently
+            </button>
+            
+            <button class="btn-link" id="resend-otp-btn" disabled>
+                Resend OTP (<span id="resend-timer">60</span>s)
+            </button>
+            
+            <div class="footer-link">
+                Wrong number? <a href="#" id="back-to-phone">Go back</a>
+            </div>
+        </div>
+        
+        <!-- STEP 3: Success -->
+        <div id="step-success" class="hidden success-screen">
+            <div class="success-icon">✓</div>
+            <h2>Account Deleted</h2>
+            <p>Your FabVision AI account has been deleted successfully.</p>
+            <p>We're sorry to see you go. Thank you for trying FabVision AI.</p>
+            <p style="margin-top: 20px; font-size: 13px; color: #9CA3AF;">
+                You can safely close this page now.
+            </p>
+        </div>
+        
+        <div class="footer-link" id="footer-help">
+            Need help? Contact us on WhatsApp: 
+            <a href="https://wa.me/917877886406" target="_blank">+91 7877886406</a>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = 'https://api.fabvision.octodosolutions.com/api/v1';
+        
+        const stepPhone = document.getElementById('step-phone');
+        const stepOtp = document.getElementById('step-otp');
+        const stepSuccess = document.getElementById('step-success');
+        const footerHelp = document.getElementById('footer-help');
+        
+        const countryCode = document.getElementById('country-code');
+        const phoneInput = document.getElementById('phone');
+        const reasonInput = document.getElementById('reason');
+        const confirmCheckbox = document.getElementById('confirm-checkbox');
+        const sendOtpBtn = document.getElementById('send-otp-btn');
+        const phoneError = document.getElementById('phone-error');
+        
+        const displayPhone = document.getElementById('display-phone');
+        const otpInput = document.getElementById('otp');
+        const verifyOtpBtn = document.getElementById('verify-otp-btn');
+        const resendOtpBtn = document.getElementById('resend-otp-btn');
+        const otpError = document.getElementById('otp-error');
+        const backToPhone = document.getElementById('back-to-phone');
+        
+        let fullPhone = '';
+        let resendInterval = null;
+        
+        // Enable Send OTP only when checkbox is checked AND phone is filled
+        function updateSendOtpState() {
+            const phoneValid = phoneInput.value.replace(/\D/g, '').length >= 10;
+            sendOtpBtn.disabled = !(confirmCheckbox.checked && phoneValid);
+        }
+        
+        confirmCheckbox.addEventListener('change', updateSendOtpState);
+        phoneInput.addEventListener('input', () => {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+            updateSendOtpState();
+        });
+        
+        // OTP input — numeric only
+        otpInput.addEventListener('input', () => {
+            otpInput.value = otpInput.value.replace(/\D/g, '');
+        });
+        
+        // Step 1: Send OTP
+        sendOtpBtn.addEventListener('click', async () => {
+            phoneError.style.display = 'none';
+            const phone = phoneInput.value.replace(/\D/g, '');
+            
+            if (phone.length < 10) {
+                showError(phoneError, 'Please enter a valid phone number');
+                return;
+            }
+            
+            fullPhone = countryCode.value + phone;
+            
+            sendOtpBtn.disabled = true;
+            sendOtpBtn.innerHTML = '<span class="loading-text">Sending OTP...</span>';
+            
+            try {
+                const res = await fetch(`${API_BASE}/account/delete/send-otp`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: fullPhone }),
+                });
+                
+                if (!res.ok) {
+                    const data = await res.json().catch(() => ({}));
+                    const msg = data.detail || data.message || (typeof data === 'string' ? data : null) || 'Could not send OTP. Please try again.';
+                    throw new Error(typeof msg === 'string' ? msg : 'Could not send OTP. Please try again.');
+                }
+                
+                // Move to OTP step
+                displayPhone.textContent = fullPhone;
+                stepPhone.classList.add('hidden');
+                stepOtp.classList.remove('hidden');
+                otpInput.focus();
+                startResendTimer();
+                
+            } catch (err) {
+                showError(phoneError, err.message || 'Network error. Please try again.');
+                sendOtpBtn.disabled = false;
+                sendOtpBtn.textContent = 'Send Verification OTP';
+            }
+        });
+        
+        // Step 2: Verify OTP
+        verifyOtpBtn.addEventListener('click', async () => {
+            otpError.style.display = 'none';
+            const otp = otpInput.value.trim();
+            
+            if (otp.length !== 6) {
+                showError(otpError, 'Please enter the 6-digit OTP');
+                return;
+            }
+            
+            verifyOtpBtn.disabled = true;
+            verifyOtpBtn.innerHTML = '<span class="loading-text">Deleting account...</span>';
+            
+            try {
+                const res = await fetch(`${API_BASE}/account/delete/verify-otp`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        phone: fullPhone,
+                        otp: otp,
+                        reason: reasonInput.value.trim() || null,
+                    }),
+                });
+                
+                const data = await res.json().catch(() => ({}));
+                
+                if (!res.ok) {
+                    const msg = data.detail || data.message || (typeof data === 'string' ? data : null) || 'Verification failed.';
+                    throw new Error(typeof msg === 'string' ? msg : 'Verification failed.');
+                }
+                
+                // Success — show final screen
+                stepOtp.classList.add('hidden');
+                stepSuccess.classList.remove('hidden');
+                footerHelp.classList.add('hidden');
+                clearInterval(resendInterval);
+                
+            } catch (err) {
+                showError(otpError, err.message || 'Invalid OTP. Please try again.');
+                verifyOtpBtn.disabled = false;
+                verifyOtpBtn.textContent = 'Verify & Delete Account Permanently';
+            }
+        });
+        
+        // Resend OTP
+        resendOtpBtn.addEventListener('click', async () => {
+            otpError.style.display = 'none';
+            try {
+                const res = await fetch(`${API_BASE}/account/delete/send-otp`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: fullPhone }),
+                });
+                if (!res.ok) {
+                    const data = await res.json().catch(() => ({}));
+                    const msg = data.detail || data.message || 'Could not resend OTP. Please try again.';
+                    throw new Error(typeof msg === 'string' ? msg : 'Could not resend OTP. Please try again.');
+                }
+                startResendTimer();
+            } catch (err) {
+                showError(otpError, err.message || 'Could not resend OTP. Please try again.');
+            }
+        });
+        
+        // Back to phone step
+        backToPhone.addEventListener('click', (e) => {
+            e.preventDefault();
+            stepOtp.classList.add('hidden');
+            stepPhone.classList.remove('hidden');
+            otpInput.value = '';
+            phoneError.style.display = 'none';
+            otpError.style.display = 'none';
+            sendOtpBtn.disabled = false;
+            sendOtpBtn.textContent = 'Send Verification OTP';
+            updateSendOtpState();
+            clearInterval(resendInterval);
+            resendOtpBtn.disabled = true;
+            resendOtpBtn.innerHTML = 'Resend OTP (<span id="resend-timer">60</span>s)';
+        });
+        
+        // Helper: show error
+        function showError(el, msg) {
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+        
+        // Helper: 60s resend timer
+        function startResendTimer() {
+            clearInterval(resendInterval);
+            let seconds = 60;
+            resendOtpBtn.disabled = true;
+            resendOtpBtn.innerHTML = 'Resend OTP (<span id="resend-timer">60</span>s)';
+            resendInterval = setInterval(() => {
+                seconds--;
+                if (seconds <= 0) {
+                    clearInterval(resendInterval);
+                    resendOtpBtn.disabled = false;
+                    resendOtpBtn.textContent = 'Resend OTP';
+                } else {
+                    const span = document.getElementById('resend-timer');
+                    if (span) span.textContent = String(seconds);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
