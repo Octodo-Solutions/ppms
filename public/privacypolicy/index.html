@@ -37,7 +37,7 @@
 </head>
 <body>
     <h1>Privacy Policy for FabVision AI</h1>
-    <p class="updated">Last updated: May 4, 2026</p>
+    <p class="updated">Last updated: August 11, 2026</p>
     
     <p>FabVision AI ("we", "our", or "the app") is operated by OctoDo Solutions. 
     This Privacy Policy explains how we collect, use, and protect your information 
@@ -46,75 +46,147 @@
     <h2>1. Information We Collect</h2>
     
     <h3>Account Information</h3>
+    <p>What we collect depends on how you sign in and what you add to your profile:</p>
     <ul>
-        <li>Phone number (verified via OTP)</li>
-        <li>Email address (optional)</li>
-        <li>Business name and city</li>
+        <li><strong>Phone number</strong> (when you sign in with OTP via Firebase Phone Auth)</li>
+        <li><strong>Google account email and name</strong> (when you sign in with Google)</li>
+        <li><strong>Display name</strong> (you can set or update this in your profile)</li>
+        <li><strong>Email address</strong> (from Google Sign-In, or optional if you add it later)</li>
+        <li>Business name, business type, and city</li>
+        <li>GST number (optional)</li>
+        <li>WhatsApp number (optional, for support and business contact)</li>
         <li>Garment types you manufacture</li>
+        <li>Optional referral code at signup (stored so we can apply bonus credits)</li>
+        <li>FCM device token (so we can send push notifications)</li>
+        <li>In-app feedback you submit (rating and/or message)</li>
+        <li>Account-deletion reason (optional, if you delete your account)</li>
     </ul>
     
     <h3>Content You Create</h3>
     <ul>
         <li>Fabric photos you upload or capture</li>
-        <li>AI-generated images and videos</li>
-        <li>Fabric classifications and metadata</li>
+        <li>Face photos you upload or capture to use as a model reference</li>
+        <li>AI-generated images, AI-generated faces, and marketing videos</li>
+        <li>Fabric classifications, colors, and related metadata</li>
+        <li>Optional notes or prompt edits you enter when generating content</li>
     </ul>
+    
+    <p><strong>Face photos:</strong> If you upload a face photo, it is stored on our 
+    servers and sent to our AI processors (Kie.ai and Google Gemini) so we can 
+    generate catalog images that use that face as a reference. This is 
+    <strong>inference only</strong> — we do not use your face photos to train 
+    our own AI models. Face photos are not limited to your device; they must 
+    be processed by these providers to produce your results. You can delete 
+    uploaded faces from the app.</p>
     
     <h3>Device Permissions</h3>
     <ul>
-        <li><strong>Camera:</strong> To capture fabric photos for AI generation</li>
-        <li><strong>Photo Library/Gallery:</strong> To select existing fabric images</li>
+        <li><strong>Camera:</strong> To capture fabric photos and face photos for AI generation</li>
+        <li><strong>Photo Library/Gallery:</strong> To select existing fabric images and face photos</li>
         <li><strong>Storage:</strong> To save generated content to your device</li>
-        <li><strong>Internet:</strong> To upload fabrics and download AI-generated content</li>
+        <li><strong>Notifications:</strong> To send generation-complete and credit alerts 
+        (Android POST_NOTIFICATIONS)</li>
+        <li><strong>Internet:</strong> To upload content, run generation, process payments, 
+        and download results</li>
     </ul>
     
-    <h3>Usage Data</h3>
+    <h3>Usage and Analytics Data</h3>
     <ul>
-        <li>App interactions, feature usage, error logs</li>
+        <li>Product analytics events (for example: sign-up, login method, fabric upload, 
+        generation started/completed/failed, video option opened, buy-credits opened, 
+        purchase completed, insufficient credits, WhatsApp support tap)</li>
+        <li>Device and app metadata collected by our analytics SDK (such as app version, 
+        operating system, and device type)</li>
+        <li>Approximate location derived from IP address may be processed by our analytics 
+        provider</li>
         <li>Generation history</li>
         <li>Credit balance and transaction history</li>
+        <li>Server-side operational logs (errors and request diagnostics), not a separate 
+        crash-reporting SDK</li>
+    </ul>
+    
+    <h3>Payment Information</h3>
+    <ul>
+        <li>We use <strong>Razorpay</strong> to process credit purchases. Card, UPI, and 
+        bank details are handled by Razorpay — we do not store your full payment 
+        card or bank credentials.</li>
+        <li>We store purchase records: amount, credits added, date, and Razorpay order 
+        or payment identifiers needed to fulfill and reconcile the payment.</li>
+        <li>Razorpay checkout may be prefilled with your name, phone number, and email 
+        so you can complete payment more easily.</li>
     </ul>
     
     <h2>2. How We Use Your Information</h2>
     <p>We use your information to:</p>
     <ul>
-        <li>Provide AI image and video generation services</li>
+        <li>Provide AI image and video generation (inference only — we send your 
+        content to AI providers to produce results; we do <strong>not</strong> train 
+        our own models on your content)</li>
+        <li>Classify fabrics and check colors or face photos so generation works correctly</li>
         <li>Process payments and manage credit balance</li>
-        <li>Authenticate your account via Firebase Auth</li>
-        <li>Send generation completion notifications</li>
-        <li>Improve our AI models and service quality</li>
+        <li>Authenticate your account via Firebase Authentication (phone OTP and/or 
+        Google Sign-In)</li>
+        <li>Send push notifications when generation finishes or credits change</li>
+        <li>Apply an optional referral bonus at signup</li>
+        <li>Understand product usage via analytics (without sending images, faces, 
+        phone numbers, emails, payment IDs, or prompts to analytics)</li>
         <li>Provide customer support via WhatsApp</li>
         <li>Comply with legal obligations</li>
     </ul>
     
     <h2>3. Data Storage and Security</h2>
     <ul>
-        <li>Data stored on AWS (Amazon Web Services) servers</li>
-        <li>Images and videos stored in encrypted AWS S3 buckets</li>
+        <li>Account and app data are stored on AWS (Amazon Web Services) servers</li>
+        <li>Images and videos are stored in encrypted AWS S3 buckets</li>
         <li>Authentication uses Firebase (Google Cloud)</li>
         <li>Industry-standard SSL/TLS encryption for all data transfer</li>
-        <li>Authentication tokens are securely hashed</li>
+        <li>We issue signed JWTs for app sessions and verify Firebase ID tokens 
+        on our servers</li>
     </ul>
     
     <h2>4. Third-Party Services</h2>
-    <p>We use the following third-party services:</p>
+    <p>We use the following third-party services. They receive only what is needed 
+    to provide that part of the product:</p>
     <ul>
-        <li><strong>Firebase Authentication</strong> (Google) - User login</li>
-        <li><strong>AWS S3</strong> (Amazon) - Image/video storage</li>
-        <li><strong>Google Gemini API</strong> - AI fabric classification and image generation</li>
-        <li><strong>Google Veo API</strong> - AI video generation</li>
-        <li><strong>Razorpay</strong> (planned) - Payment processing</li>
+        <li><strong>Firebase Authentication</strong> (Google) — Phone OTP login and 
+        Google Sign-In</li>
+        <li><strong>Firebase Cloud Messaging</strong> (Google) — Push notifications; 
+        we store your FCM device token</li>
+        <li><strong>AWS S3</strong> (Amazon) — Storage of fabrics, faces, generated 
+        images, and videos</li>
+        <li><strong>Kie.ai</strong> — AI generation processor. Receives fabric photos, 
+        face photos, catalog stills, and text prompts to generate images and 
+        marketing videos. Kie.ai uses Google AI models (including Veo-class video 
+        models) on our behalf. We do not call Google Veo as a separate first-party 
+        integration.</li>
+        <li><strong>Google Gemini API</strong> (Google) — Fabric classification, 
+        color and face checks, and image generation (including as a fallback if 
+        Kie.ai image generation fails)</li>
+        <li><strong>Razorpay</strong> — Payment processing for credit purchases 
+        (active). Receives checkout prefill (name, phone, email) and processes 
+        the payment. We do not store card or bank details.</li>
+        <li><strong>PostHog</strong> — Product analytics. We identify you only by 
+        an internal user id. We do <strong>not</strong> send images, faces, phone 
+        numbers, emails, payment IDs, or generation prompts to PostHog. PostHog 
+        may receive event names, allowlisted properties (such as garment type, 
+        generation type, amount in rupees, credits added), device/app metadata, 
+        and possibly your IP address.</li>
+        <li><strong>Google Fonts</strong> — Used to load app fonts. The font CDN 
+        may see your device IP address.</li>
     </ul>
     
     <h2>5. Data Sharing</h2>
     <p>We do NOT sell, rent, or share your personal information with third 
-    parties for marketing purposes. Your fabric photos and generated content 
-    are private to your account.</p>
+    parties for marketing purposes. Your fabrics, face photos, and generated 
+    content belong to your account. They are shared with the processors listed 
+    above only as needed to store files, generate results, send notifications, 
+    process payments, or measure product usage.</p>
     
     <p>We may share data only when:</p>
     <ul>
         <li>Required by law or court order</li>
-        <li>Necessary to operate the service (e.g., AWS, Google Cloud)</li>
+        <li>Necessary to operate the service (for example AWS, Firebase, Kie.ai, 
+        Google Gemini, Razorpay, PostHog)</li>
         <li>You explicitly consent</li>
     </ul>
     
@@ -142,10 +214,12 @@
     data from children.</p>
     
     <h2>9. AI-Generated Content</h2>
-    <p>Content generated by FabVision AI uses Google's Veo and Gemini AI 
-    models. Generated videos may include Google's SynthID watermark and 
-    C2PA metadata indicating AI generation, in compliance with Google's 
-    policies.</p>
+    <p>FabVision AI sends your fabric photos, optional face photos, catalog 
+    stills, and any notes you provide to AI processors (Kie.ai and Google Gemini) 
+    to generate images and videos. This is inference only. We do not train our 
+    own models on your content.</p>
+    <p>Kie.ai may use Google AI models to produce video. We do not claim that 
+    generated videos include a specific watermark or content-credential format.</p>
     
     <h2>10. Changes to This Policy</h2>
     <p>We may update this privacy policy occasionally. Changes will be 
