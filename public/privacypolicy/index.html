@@ -3,241 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="How OctoDo Solutions Pvt. Ltd. collects, uses, shares and protects personal data in the FabVision AI app.">
     <title>Privacy Policy - FabVision AI</title>
     <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --muted: #555b61;
+            --brand: #0D8B7D;
+            --accent: #F59E0B;
+            --heading: #0C1B2A;
+            --box: #f5f5f5;
+            --line: #dddddd;
+            --th: #eef6f5;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1720;
+                --text: #e6edf3;
+                --muted: #a3afba;
+                --brand: #3cc4b3;
+                --accent: #f5b041;
+                --heading: #d5e4ef;
+                --box: #17222d;
+                --line: #2c3c4a;
+                --th: #143039;
+            }
+        }
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
+            font-size: 1.0625rem;
+            max-width: 50rem;
+            margin: 0 auto;
+            padding: 2rem 1rem 3rem;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: #ffffff;
+            color: var(--text);
+            background: var(--bg);
+            overflow-wrap: break-word;
         }
-        h1 { 
-            color: #0D8B7D; 
-            border-bottom: 3px solid #F59E0B; 
-            padding-bottom: 10px; 
+        h1 {
+            color: var(--brand);
+            font-size: 1.75rem;
+            line-height: 1.25;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.6rem;
+            margin: 0 0 0.75rem;
         }
-        h2 { color: #0D8B7D; margin-top: 30px; }
-        h3 { color: #0C1B2A; margin-top: 20px; }
-        a { color: #0D8B7D; }
-        .updated { color: #666; font-style: italic; }
-        .contact-box {
-            background: #f5f5f5;
-            padding: 20px;
+        h2 { color: var(--brand); font-size: 1.35rem; line-height: 1.3; margin: 2.25rem 0 0.75rem; }
+        h3 { color: var(--heading); font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+        a { color: var(--brand); }
+        .updated { color: var(--muted); font-style: italic; margin-top: 0; }
+        .box {
+            background: var(--box);
+            padding: 1rem 1.25rem;
             border-radius: 8px;
-            border-left: 4px solid #F59E0B;
-            margin-top: 20px;
+            border-left: 4px solid var(--accent);
+            margin: 1.25rem 0;
         }
-        ul { padding-left: 20px; }
-        li { margin: 8px 0; }
-        hr { border: none; border-top: 1px solid #ddd; margin: 30px 0; }
+        .box p { margin: 0.4rem 0; }
+        ul, ol { padding-left: 1.25rem; }
+        li { margin: 0.5rem 0; }
+        hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+        th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.7rem; border: 1px solid var(--line); }
+        th { background: var(--th); color: var(--heading); }
+        /* Phones: each table row becomes a stacked card, so nothing scrolls sideways. */
+        @media (max-width: 40rem) {
+            table, thead, tbody, tr, th, td { display: block; width: 100%; }
+            thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+            tr { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 0.75rem; overflow: hidden; }
+            td { border: none; border-top: 1px solid var(--line); }
+            td:first-child { border-top: none; background: var(--th); font-weight: 600; color: var(--heading); }
+            td[data-label]:not(:first-child)::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.8rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+                color: var(--muted);
+            }
+        }
+        .footer { text-align: center; color: var(--muted); margin-top: 2.5rem; }
     </style>
 </head>
 <body>
-    <h1>Privacy Policy for FabVision AI</h1>
-    <p class="updated">Last updated: August 11, 2026</p>
-    
-    <p>FabVision AI ("we", "our", or "the app") is operated by OctoDo Solutions. 
-    This Privacy Policy explains how we collect, use, and protect your information 
-    when you use our mobile application.</p>
-    
-    <h2>1. Information We Collect</h2>
-    
-    <h3>Account Information</h3>
-    <p>What we collect depends on how you sign in and what you add to your profile:</p>
-    <ul>
-        <li><strong>Phone number</strong> (when you sign in with OTP via Firebase Phone Auth)</li>
-        <li><strong>Google account email and name</strong> (when you sign in with Google)</li>
-        <li><strong>Display name</strong> (you can set or update this in your profile)</li>
-        <li><strong>Email address</strong> (from Google Sign-In, or optional if you add it later)</li>
-        <li>Business name, business type, and city</li>
-        <li>GST number (optional)</li>
-        <li>WhatsApp number (optional, for support and business contact)</li>
-        <li>Garment types you manufacture</li>
-        <li>Optional referral code at signup (stored so we can apply bonus credits)</li>
-        <li>FCM device token (so we can send push notifications)</li>
-        <li>In-app feedback you submit (rating and/or message)</li>
-        <li>Account-deletion reason (optional, if you delete your account)</li>
-    </ul>
-    
-    <h3>Content You Create</h3>
-    <ul>
-        <li>Fabric photos you upload or capture</li>
-        <li>Face photos you upload or capture to use as a model reference</li>
-        <li>AI-generated images, AI-generated faces, and marketing videos</li>
-        <li>Fabric classifications, colors, and related metadata</li>
-        <li>Optional notes or prompt edits you enter when generating content</li>
-    </ul>
-    
-    <p><strong>Face photos:</strong> If you upload a face photo, it is stored on our 
-    servers and sent to our AI processors (Kie.ai and Google Gemini) so we can 
-    generate catalog images that use that face as a reference. This is 
-    <strong>inference only</strong> — we do not use your face photos to train 
-    our own AI models. Face photos are not limited to your device; they must 
-    be processed by these providers to produce your results. You can delete 
-    uploaded faces from the app.</p>
-    
-    <h3>Device Permissions</h3>
-    <ul>
-        <li><strong>Camera:</strong> To capture fabric photos and face photos for AI generation</li>
-        <li><strong>Photo Library/Gallery:</strong> To select existing fabric images and face photos</li>
-        <li><strong>Storage:</strong> To save generated content to your device</li>
-        <li><strong>Notifications:</strong> To send generation-complete and credit alerts 
-        (Android POST_NOTIFICATIONS)</li>
-        <li><strong>Internet:</strong> To upload content, run generation, process payments, 
-        and download results</li>
-    </ul>
-    
-    <h3>Usage and Analytics Data</h3>
-    <ul>
-        <li>Product analytics events (for example: sign-up, login method, fabric upload, 
-        generation started/completed/failed, video option opened, buy-credits opened, 
-        purchase completed, insufficient credits, WhatsApp support tap)</li>
-        <li>Device and app metadata collected by our analytics SDK (such as app version, 
-        operating system, and device type)</li>
-        <li>Approximate location derived from IP address may be processed by our analytics 
-        provider</li>
-        <li>Generation history</li>
-        <li>Credit balance and transaction history</li>
-        <li>Server-side operational logs (errors and request diagnostics), not a separate 
-        crash-reporting SDK</li>
-    </ul>
-    
-    <h3>Payment Information</h3>
-    <ul>
-        <li>We use <strong>Razorpay</strong> to process credit purchases. Card, UPI, and 
-        bank details are handled by Razorpay — we do not store your full payment 
-        card or bank credentials.</li>
-        <li>We store purchase records: amount, credits added, date, and Razorpay order 
-        or payment identifiers needed to fulfill and reconcile the payment.</li>
-        <li>Razorpay checkout may be prefilled with your name, phone number, and email 
-        so you can complete payment more easily.</li>
-    </ul>
-    
-    <h2>2. How We Use Your Information</h2>
-    <p>We use your information to:</p>
-    <ul>
-        <li>Provide AI image and video generation (inference only — we send your 
-        content to AI providers to produce results; we do <strong>not</strong> train 
-        our own models on your content)</li>
-        <li>Classify fabrics and check colors or face photos so generation works correctly</li>
-        <li>Process payments and manage credit balance</li>
-        <li>Authenticate your account via Firebase Authentication (phone OTP and/or 
-        Google Sign-In)</li>
-        <li>Send push notifications when generation finishes or credits change</li>
-        <li>Apply an optional referral bonus at signup</li>
-        <li>Understand product usage via analytics (without sending images, faces, 
-        phone numbers, emails, payment IDs, or prompts to analytics)</li>
-        <li>Provide customer support via WhatsApp</li>
-        <li>Comply with legal obligations</li>
-    </ul>
-    
-    <h2>3. Data Storage and Security</h2>
-    <ul>
-        <li>Account and app data are stored on AWS (Amazon Web Services) servers</li>
-        <li>Images and videos are stored in encrypted AWS S3 buckets</li>
-        <li>Authentication uses Firebase (Google Cloud)</li>
-        <li>Industry-standard SSL/TLS encryption for all data transfer</li>
-        <li>We issue signed JWTs for app sessions and verify Firebase ID tokens 
-        on our servers</li>
-    </ul>
-    
-    <h2>4. Third-Party Services</h2>
-    <p>We use the following third-party services. They receive only what is needed 
-    to provide that part of the product:</p>
-    <ul>
-        <li><strong>Firebase Authentication</strong> (Google) — Phone OTP login and 
-        Google Sign-In</li>
-        <li><strong>Firebase Cloud Messaging</strong> (Google) — Push notifications; 
-        we store your FCM device token</li>
-        <li><strong>AWS S3</strong> (Amazon) — Storage of fabrics, faces, generated 
-        images, and videos</li>
-        <li><strong>Kie.ai</strong> — AI generation processor. Receives fabric photos, 
-        face photos, catalog stills, and text prompts to generate images and 
-        marketing videos. Kie.ai uses Google AI models (including Veo-class video 
-        models) on our behalf. We do not call Google Veo as a separate first-party 
-        integration.</li>
-        <li><strong>Google Gemini API</strong> (Google) — Fabric classification, 
-        color and face checks, and image generation (including as a fallback if 
-        Kie.ai image generation fails)</li>
-        <li><strong>Razorpay</strong> — Payment processing for credit purchases 
-        (active). Receives checkout prefill (name, phone, email) and processes 
-        the payment. We do not store card or bank details.</li>
-        <li><strong>PostHog</strong> — Product analytics. We identify you only by 
-        an internal user id. We do <strong>not</strong> send images, faces, phone 
-        numbers, emails, payment IDs, or generation prompts to PostHog. PostHog 
-        may receive event names, allowlisted properties (such as garment type, 
-        generation type, amount in rupees, credits added), device/app metadata, 
-        and possibly your IP address.</li>
-        <li><strong>Google Fonts</strong> — Used to load app fonts. The font CDN 
-        may see your device IP address.</li>
-    </ul>
-    
-    <h2>5. Data Sharing</h2>
-    <p>We do NOT sell, rent, or share your personal information with third 
-    parties for marketing purposes. Your fabrics, face photos, and generated 
-    content belong to your account. They are shared with the processors listed 
-    above only as needed to store files, generate results, send notifications, 
-    process payments, or measure product usage.</p>
-    
-    <p>We may share data only when:</p>
-    <ul>
-        <li>Required by law or court order</li>
-        <li>Necessary to operate the service (for example AWS, Firebase, Kie.ai, 
-        Google Gemini, Razorpay, PostHog)</li>
-        <li>You explicitly consent</li>
-    </ul>
-    
-    <h2>6. Your Rights</h2>
-    <p>You have the right to:</p>
-    <ul>
-        <li>Access your personal data</li>
-        <li>Correct inaccurate data</li>
-        <li>Delete your account and associated data</li>
-        <li>Export your generated content</li>
-        <li>Withdraw consent at any time</li>
-    </ul>
-    
-    <h2>7. Data Retention</h2>
-    <ul>
-        <li>Account data: Retained while account is active</li>
-        <li>Generated content: Retained until you delete it</li>
-        <li>Usage logs: Retained for 90 days</li>
-        <li>Payment records: Retained for 7 years (Indian tax law)</li>
-    </ul>
-    
-    <h2>8. Children's Privacy</h2>
-    <p>FabVision AI is intended for business users (textile manufacturers) 
-    and is not directed at children under 18. We do not knowingly collect 
-    data from children.</p>
-    
-    <h2>9. AI-Generated Content</h2>
-    <p>FabVision AI sends your fabric photos, optional face photos, catalog 
-    stills, and any notes you provide to AI processors (Kie.ai and Google Gemini) 
-    to generate images and videos. This is inference only. We do not train our 
-    own models on your content.</p>
-    <p>Kie.ai may use Google AI models to produce video. We do not claim that 
-    generated videos include a specific watermark or content-credential format.</p>
-    
-    <h2>10. Changes to This Policy</h2>
-    <p>We may update this privacy policy occasionally. Changes will be 
-    posted in the app and on our website. Continued use after changes 
-    means you accept the updated policy.</p>
-    
-    <h2>11. Contact Us</h2>
-    <div class="contact-box">
-        <p>For privacy questions or concerns:</p>
-        <ul>
-            <li><strong>WhatsApp:</strong> +91 7877886406</li>
-            <li><strong>Business:</strong> OctoDo Solutions</li>
-        </ul>
+    <h1>FabVision AI — Privacy Policy</h1>
+    <p class="updated">Last updated: 19 October 2026</p>
+
+    <p>This Privacy Policy explains how <strong>OctoDo Solutions Private Limited</strong>
+    ("OctoDo", "we", "us") collects, uses, shares and protects personal data when you use
+    the <strong>FabVision AI</strong> mobile app and its services ("FabVision") on Android
+    and iOS.</p>
+
+    <p>We act as the Data Fiduciary for your personal data under India's Digital Personal
+    Data Protection Act, 2023 (DPDP Act).</p>
+
+    <div class="box">
+        <p><strong>Company:</strong> OctoDo Solutions Pvt. Ltd., 7th Floor, Tower B, Bhutani
+        Cyber Park, B706, C Block, Phase 2, Industrial Area, Sector 62, Noida, Uttar Pradesh
+        201309, India</p>
+        <p><strong>Contact:</strong> <a href="mailto:octodosolutions682@gmail.com">octodosolutions682@gmail.com</a></p>
+        <p><strong>Grievance Officer:</strong> Himanshu,
+        <a href="mailto:himanshu@octodosolutions.com">himanshu@octodosolutions.com</a></p>
     </div>
-    
+
+    <p>By creating an account or using FabVision you agree to this Policy and to our Terms
+    of Service, which are available inside the app (Profile → Settings → Terms of
+    Service).</p>
+
     <hr>
-    <p style="text-align: center; color: #666; margin-top: 40px;">
-        By using FabVision AI, you agree to this Privacy Policy.
-    </p>
+
+    <h2>1. Information we collect</h2>
+
+    <h3>1.1 Account and profile</h3>
+    <ul>
+        <li><strong>Sign-in details.</strong> These depend on how you sign in:
+            <ul>
+                <li><strong>Phone:</strong> your mobile number, verified with a one-time
+                password through Firebase Authentication. On Android the app may suggest your
+                phone number using Google's phone-number hint, and only if you choose to use
+                it.</li>
+                <li><strong>Google:</strong> your Google email address and name.</li>
+                <li><strong>Sign in with Apple:</strong> a stable Apple identifier, and your
+                email (which can be an Apple private-relay address) and name if you choose to
+                share them. We also keep an encrypted Apple sign-in token, so that we can tell
+                Apple to revoke FabVision's access when you delete your account.</li>
+            </ul>
+        </li>
+        <li><strong>Profile and business details you enter:</strong> display name, business
+        name, business type, city, the garment types you work with, and optionally your GSTIN,
+        WhatsApp number, a contact email or a contact phone number.</li>
+        <li><strong>Account records:</strong> your account ID, sign-in method, the platform you
+        signed up on (Android or iOS), your sign-up date, your credit balance and credit
+        history, and referral information (your referral code, who referred you, and referral
+        rewards).</li>
+        <li><strong>IP address at sign-up.</strong> We record the IP address you sign up from
+        and use it to detect abuse of free and referral credits (fraud prevention). We keep it
+        for 12 months (section 6). From the next app/server update it is no longer sent to our
+        billing system.</li>
+        <li><strong>Push notification token</strong> (Firebase Cloud Messaging), so that we can
+        tell you when your images or videos are ready.</li>
+    </ul>
+
+    <h3>1.2 Content you upload and create</h3>
+    <ul>
+        <li><strong>Fabric photos</strong>, which we store as the original and as processed
+        copies, plus the original file name and file size.</li>
+        <li><strong>Face photos</strong> that you choose to upload as a model reference. Before
+        your first face upload we ask you to confirm that the photo is of you, or that you have
+        that person's permission.</li>
+        <li><strong>AI-generated content:</strong> catalogue images, model photoshoots, colour
+        variations, AI faces and short marketing videos, together with the settings and any
+        notes or edit instructions you typed.</li>
+        <li><strong>Feedback</strong> you send in the app (a star rating and an optional
+        message), and an optional reason if you delete your account.</li>
+    </ul>
+
+    <h3>1.3 Purchases</h3>
+    <ul>
+        <li><strong>Android (Razorpay):</strong> order and payment IDs, the amount, the number
+        of credits bought and the payment status. Razorpay collects your card, UPI or bank
+        details directly in its own checkout. We never see or store them. We pre-fill
+        Razorpay's checkout with your name, phone and email.</li>
+        <li><strong>Android checkout diagnostics:</strong> when a payment fails, technical facts
+        about your phone's payment set-up (Android version, WebView version, Google Play
+        services status, whether UPI apps are installed). These help us fix checkout problems.
+        They do not include payment details.</li>
+        <li><strong>iPhone and iPad (Apple In-App Purchase):</strong> Apple transaction IDs, the
+        product bought, the price, currency and storefront, and refund notifications from
+        Apple. Apple handles payment. If Apple asks us about a refund request, we send Apple
+        information about how you used the credits (consumption information)
+        <strong>only if you agreed to this</strong> when you bought credits.</li>
+    </ul>
+
+    <h3>1.4 Usage, device and diagnostics</h3>
+    <ul>
+        <li><strong>App analytics:</strong> which screens you open and which features you use
+        (for example "generation started" or "purchase completed"). These events are tied to
+        your FabVision account ID. We send them to PostHog and to Google Analytics for Firebase
+        (see section 4). We restrict them to a fixed list of fields that never includes your
+        phone number, email address, photos or the text you type. <strong>We do not use
+        advertising identifiers</strong> (no Android Advertising ID, no Apple IDFA), and we do
+        not track you across other companies' apps or websites.</li>
+        <li><strong>Crash reports:</strong> if the app crashes or hits an error, Firebase
+        Crashlytics collects a technical report (the error, device model, operating-system
+        version and app version). Crash reports are not linked to your account.</li>
+        <li><strong>Install referral (Android):</strong> if you installed FabVision through a
+        friend's invite link, Google Play tells the app the referral code from that link.</li>
+        <li><strong>Server logs:</strong> request logs (time, path, response status, IP
+        address) used for security and to fix problems. We keep them only for a limited
+        time.</li>
+    </ul>
+
+    <h3>1.5 Device permissions</h3>
+    <ul>
+        <li><strong>Camera:</strong> to photograph fabrics and, if you choose, a face
+        reference.</li>
+        <li><strong>Photos:</strong> to pick images you choose, and to save generated images
+        and videos to your gallery.</li>
+        <li><strong>Notifications:</strong> to tell you when results are ready.</li>
+    </ul>
+    <p>FabVision does not access your contacts, your precise location or your
+    microphone.</p>
+
+    <hr>
+
+    <h2>2. How we use your information</h2>
+    <ul>
+        <li>To create and run your account, and to sign you in.</li>
+        <li>To generate your images and videos. This includes classifying fabrics, detecting
+        colours and checking that a face photo is suitable.</li>
+        <li>To process purchases, add credits, handle refunds and chargebacks, and keep the
+        accounting and tax records the law requires.</li>
+        <li>To run referral and welcome credits, and to prevent abuse of them (for example with
+        your sign-up IP address and phone number).</li>
+        <li>To send notifications you can turn off in your phone's settings.</li>
+        <li>To answer support requests, feedback and grievances.</li>
+        <li>To understand how FabVision is used and to fix errors, through analytics and crash
+        reports.</li>
+        <li>To meet legal obligations and to protect FabVision and its users.</li>
+    </ul>
+    <p><strong>We do not use the face photos you upload to train AI models. Since
+    19 October 2026 we do not use the fabric photos you upload to train AI models.</strong>
+    We do not sell your personal data, and we do not use it for advertising.</p>
+
+    <hr>
+
+    <h2>3. AI processing</h2>
+    <p>To produce your results, your fabric photos, any face photo you use, previous results
+    you choose to edit, and your notes are sent to our AI providers:</p>
+    <ul>
+        <li><strong>Google (Gemini API)</strong>, which processes your content to create your
+        results under Google's Gemini API terms.</li>
+        <li><strong>Kie.ai</strong>, which runs AI image and video models on our behalf. For
+        images, Kie receives a time-limited link (valid for 2 hours) to the photo in our
+        storage. For videos, the image is uploaded to Kie's file service
+        (kieai.redpandaai.co).</li>
+    </ul>
+    <p>We send your content to these providers only so they can create your results. They
+    process it under their own terms, on servers that may be <strong>outside India</strong>.
+    Kie.ai states that it deletes files uploaded to it after 24 hours, generated media after
+    14 days and request logs after 2 months (Kie.ai API documentation, "Data Retention
+    Policy", checked 19 October 2026).</p>
+    <p>AI results can vary and may not exactly match your fabric. Please check results before
+    using them commercially.</p>
+
+    <hr>
+
+    <h2>4. Who we share data with</h2>
+    <p>We share personal data only with these service providers ("Data Processors"), and only
+    as needed to run FabVision:</p>
+    <table>
+        <thead>
+            <tr><th>Provider</th><th>What they receive</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Google Firebase Authentication</td>
+                <td data-label="What they receive">Phone number (Google sends the OTP SMS), Google or Apple sign-in details</td>
+                <td data-label="Why">Sign-in</td>
+            </tr>
+            <tr>
+                <td>Google Firebase Cloud Messaging</td>
+                <td data-label="What they receive">Push token, notification text</td>
+                <td data-label="Why">Notifications</td>
+            </tr>
+            <tr>
+                <td>Google Analytics for Firebase</td>
+                <td data-label="What they receive">App usage events, screen names, purchase events (amount, currency, product, transaction ID), your FabVision account ID, an app-instance ID. No advertising ID.</td>
+                <td data-label="Why">Product analytics</td>
+            </tr>
+            <tr>
+                <td>Firebase Crashlytics</td>
+                <td data-label="What they receive">Crash and error reports (not linked to your account)</td>
+                <td data-label="Why">Fixing errors</td>
+            </tr>
+            <tr>
+                <td>PostHog (servers in the United States)</td>
+                <td data-label="What they receive">App usage events and your FabVision account ID. PostHog also receives your IP address with each event and keeps it with that event.</td>
+                <td data-label="Why">Product analytics</td>
+            </tr>
+            <tr>
+                <td>Google (Gemini API)</td>
+                <td data-label="What they receive">Photos, face references and prompts for generation</td>
+                <td data-label="Why">AI generation</td>
+            </tr>
+            <tr>
+                <td>Kie.ai</td>
+                <td data-label="What they receive">Photos and face references (time-limited links or uploads), prompts</td>
+                <td data-label="Why">AI generation</td>
+            </tr>
+            <tr>
+                <td>Razorpay (Android)</td>
+                <td data-label="What they receive">Your name, phone and email to pre-fill checkout; order amount; your FabVision account ID in the order notes</td>
+                <td data-label="Why">Payments</td>
+            </tr>
+            <tr>
+                <td>Apple (iOS)</td>
+                <td data-label="What they receive">Sign in with Apple; App Store purchases; consumption information <strong>only with your consent</strong></td>
+                <td data-label="Why">Sign-in, payments, refunds</td>
+            </tr>
+            <tr>
+                <td>Google Play (Android)</td>
+                <td data-label="What they receive">The install referrer, read by the app</td>
+                <td data-label="Why">Referral credits</td>
+            </tr>
+            <tr>
+                <td>Amazon Web Services (S3)</td>
+                <td data-label="What they receive">All uploaded and generated images and videos</td>
+                <td data-label="Why">Storage</td>
+            </tr>
+            <tr>
+                <td>Google Fonts</td>
+                <td data-label="What they receive">Your IP address when the poster editor downloads a font that is not built into the app</td>
+                <td data-label="Why">Poster fonts</td>
+            </tr>
+            <tr>
+                <td>OctoDo's billing system (Payment Tracker)</td>
+                <td data-label="What they receive">For Android purchases: your name, phone or WhatsApp number, email, business name, GSTIN, city, order and amount. For iOS purchases: your account ID and Apple's signed transaction only. Until the next app/server update, Android purchases also include your sign-up IP address; the billing system keeps only an approximate location (such as city and state) from it and discards the IP.</td>
+                <td data-label="Why">Invoicing and accounting</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>PostHog and Google Analytics may derive an approximate location (such as city or
+    country) from your IP address.</p>
+
+    <p>We may also disclose information where the law requires it, to respond to lawful
+    requests from authorities, or to protect the rights and safety of OctoDo, our users or
+    others.</p>
+
+    <p><strong>International transfer.</strong> Several of the providers above process data
+    outside India, including in the United States. We transfer data only to countries the
+    Government of India has not restricted under the DPDP Act.</p>
+
+    <hr>
+
+    <h2>5. Storage and security</h2>
+    <ul>
+        <li>Data is sent over encrypted connections (HTTPS/TLS).</li>
+        <li>Photos and videos are kept in private cloud storage (Amazon Web Services),
+        <strong>encrypted at rest</strong> with AES-256 (Amazon S3 encrypts every new object by
+        default). The app gets short-lived signed links to view them; they are not
+        public.</li>
+        <li>Sign-in tokens are stored in your phone's secure storage (Android Keystore and iOS
+        Keychain).</li>
+        <li>Access to admin tools is restricted to authorised OctoDo staff.</li>
+    </ul>
+    <p>No system is perfectly secure. If a personal data breach affects you, we will notify
+    you and the Data Protection Board of India as the DPDP Act requires.</p>
+
+    <hr>
+
+    <h2>6. How long we keep data</h2>
+    <table>
+        <thead>
+            <tr><th>Data</th><th>How long</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Account and profile</td>
+                <td data-label="How long">While your account is open. If you delete your account: permanently erased <strong>30 days</strong> later (section 7).</td>
+            </tr>
+            <tr>
+                <td>Fabric photos and generated images and videos</td>
+                <td data-label="How long">Until you delete them in the app, or until your account is erased (30 days after you delete it).</td>
+            </tr>
+            <tr>
+                <td>Uploaded face photos</td>
+                <td data-label="How long">Until your account is erased (30 days after you delete it). Deleting a face in the app removes it from your account.</td>
+            </tr>
+            <tr>
+                <td>Payment and purchase records</td>
+                <td data-label="How long">As required by applicable law. They are kept after your account is erased, without your name, phone number or email.</td>
+            </tr>
+            <tr>
+                <td>Sign-up IP address</td>
+                <td data-label="How long"><strong>12 months</strong> from sign-up, for fraud prevention, then deleted. Erased sooner if your account is erased first.</td>
+            </tr>
+            <tr>
+                <td>Server logs</td>
+                <td data-label="How long">For a limited time, for security and to fix problems.</td>
+            </tr>
+            <tr>
+                <td>Crash reports</td>
+                <td data-label="How long">90 days (Firebase Crashlytics).</td>
+            </tr>
+            <tr>
+                <td>Analytics events</td>
+                <td data-label="How long">Kept under PostHog's and Google Analytics' retention settings, for up to <strong>14 months</strong> for event-level data. They are linked to your FabVision account ID, not to your name, phone number or email.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2 id="delete">7. Deleting your account</h2>
+    <p><strong>In the app (Android and iOS):</strong></p>
+    <ol>
+        <li>Open the <strong>Profile</strong> tab, then tap <strong>Settings</strong>.</li>
+        <li>Under <strong>Account</strong>, tap <strong>Delete account</strong>.</li>
+        <li>Read what happens, optionally tell us why you are leaving, tick the confirmation
+        box, and tap <strong>Delete my account</strong>. Then tap <strong>Delete
+        account</strong> to confirm.</li>
+    </ol>
+
+    <p><strong>What happens:</strong></p>
+    <div class="box">
+        <p>Your account is closed now; all your photos and data are permanently erased after
+        30 days. Payment records are kept as required by law, without your personal
+        details.</p>
+    </div>
+    <p>In detail:</p>
+    <ul>
+        <li><strong>Immediately:</strong> your account is closed, you are signed out and you
+        cannot sign in to it again. We revoke FabVision's Sign in with Apple access if you used
+        it. Unused credits are lost.</li>
+        <li><strong>For 30 days:</strong> nothing else is removed, so that a mistaken deletion
+        can be undone. Contact us within 30 days and we can reopen your account.</li>
+        <li><strong>After 30 days, automatically:</strong> we permanently erase your fabric
+        photos, face photos, generated images and videos, your profile and business details,
+        your feedback and your sign-in record (Firebase Authentication). Analytics events are
+        kept as described in section 6. Payment and credit records are kept as required by
+        applicable law, with your name, phone number and email removed. After this the account
+        cannot be reopened.</li>
+    </ul>
+
+    <p><strong>Without the app:</strong> follow the steps at
+    <a href="https://octodo-solutions.github.io/ppms/deleteaccount/">octodo-solutions.github.io/ppms/deleteaccount/</a>,
+    or email <a href="mailto:octodosolutions682@gmail.com?subject=Delete%20my%20FabVision%20account">octodosolutions682@gmail.com</a>
+    with the subject "Delete my FabVision account" and the phone number or email you signed in
+    with. We close the account within <strong>7 days</strong>, after we verify that the request
+    comes from the phone number or email address registered to the account. The same 30-day
+    timeline applies from when we close the account.</p>
+
+    <hr>
+
+    <h2>8. Your rights</h2>
+    <p>Under the DPDP Act you can:</p>
+    <ul>
+        <li>ask for a summary of the personal data we hold about you and how we use it;</li>
+        <li>ask us to correct, complete or update it. You can edit most profile details in the
+        app.</li>
+        <li>ask us to erase it (see section 7);</li>
+        <li>withdraw consent at any time. Withdrawing consent may mean we can no longer provide
+        the service.</li>
+        <li>nominate another person to exercise your rights if you die or become
+        incapacitated;</li>
+        <li>raise a grievance with our Grievance Officer, and then with the Data Protection
+        Board of India if you are not satisfied.</li>
+    </ul>
+    <p>To use any of these rights, email
+    <a href="mailto:octodosolutions682@gmail.com">octodosolutions682@gmail.com</a>. We
+    acknowledge your request within <strong>24 hours</strong> and resolve it within
+    <strong>15 days</strong>.</p>
+
+    <hr>
+
+    <h2>9. Children</h2>
+    <p>FabVision is for businesses and for adults aged <strong>18 and over</strong>. We do not
+    knowingly collect personal data from children. If you believe a child has given us
+    personal data, contact us and we will delete it.</p>
+
+    <hr>
+
+    <h2>10. Changes to this Policy</h2>
+    <p>We may update this Policy. We will change the "Last updated" date above and, for
+    significant changes, tell you in the app before they take effect.</p>
+
+    <hr>
+
+    <h2>11. Contact and Grievance Officer</h2>
+    <div class="box">
+        <p>For questions, requests about your personal data and complaints, write to us
+        first:</p>
+        <p><strong>Email:</strong> <a href="mailto:octodosolutions682@gmail.com">octodosolutions682@gmail.com</a><br>
+        <strong>WhatsApp (support):</strong> <a href="https://wa.me/917877886406">+91 78778 86406</a></p>
+        <p>If you are not satisfied with our answer, or want to raise a grievance
+        directly:</p>
+        <p><strong>Grievance Officer:</strong> Himanshu<br>
+        <strong>Email:</strong> <a href="mailto:himanshu@octodosolutions.com">himanshu@octodosolutions.com</a></p>
+        <p><strong>Registered office:</strong> OctoDo Solutions Pvt. Ltd., 7th Floor, Tower B,
+        Bhutani Cyber Park, B706, C Block, Phase 2, Industrial Area, Sector 62, Noida, Uttar
+        Pradesh 201309, India</p>
+        <p>We acknowledge grievances within <strong>24 hours</strong> and resolve them within
+        <strong>15 days</strong>.</p>
+    </div>
+
+    <p class="footer">FabVision AI · OctoDo Solutions Pvt. Ltd.</p>
 </body>
 </html>
