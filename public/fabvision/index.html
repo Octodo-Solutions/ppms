@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="FabVision AI turns a photo of your fabric into a finished model photo for your catalog. Made for Indian textile sellers.">
+    <meta name="referrer" content="no-referrer">
+    <title>FabVision AI: fabric to model photos</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180.png">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --muted: #555b61;
+            --brand: #0D8B7D;
+            --brand-ink: #ffffff;
+            --accent: #F59E0B;
+            --heading: #0C1B2A;
+            --box: #f5f5f5;
+            --line: #dddddd;
+            --hero: #e9f5f3;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1720;
+                --text: #e6edf3;
+                --muted: #a3afba;
+                --brand: #3cc4b3;
+                --brand-ink: #0b1a1f;
+                --accent: #f5b041;
+                --heading: #d5e4ef;
+                --box: #17222d;
+                --line: #2c3c4a;
+                --hero: #12262b;
+            }
+        }
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--text);
+            background: var(--bg);
+            overflow-wrap: break-word;
+        }
+        .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1rem; }
+        a { color: var(--brand); }
+        h1, h2, h3 { line-height: 1.25; }
+        h2 { color: var(--brand); font-size: 1.5rem; margin: 2.5rem 0 0.75rem; }
+        h3 { color: var(--heading); font-size: 1.1rem; margin: 0 0 0.35rem; }
+
+        .site-header { display: flex; align-items: center; min-height: 3.5rem; }
+        .site-header a {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            color: var(--heading); font-weight: 700; font-size: 1.1rem; text-decoration: none;
+        }
+        .site-header img { width: 2.25rem; height: 2.25rem; border-radius: 22%; box-shadow: 0 0 0 1px var(--line); }
+
+        header.hero { background: var(--hero); padding: 1rem 0 2rem; border-bottom: 3px solid var(--accent); }
+        .hero h1 { margin-top: 1rem; }
+        .hero h1 { font-size: clamp(1.9rem, 6vw, 2.8rem); color: var(--heading); margin: 0 0 0.6rem; }
+        .hero p.lead { font-size: 1.15rem; color: var(--muted); margin: 0 0 1.5rem; max-width: 40rem; }
+
+        .stores { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .store {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-height: 3rem; padding: 0.6rem 1.25rem; border-radius: 0.6rem;
+            font-weight: 600; text-decoration: none;
+        }
+        .store.play { background: var(--brand); color: var(--brand-ink); }
+        .store.apple { border: 2px dashed var(--line); color: var(--muted); }
+
+        /* Phones: one swipeable row (only the row scrolls, never the page).
+           Wider screens: all four side by side. */
+        .shots {
+            display: flex; gap: 1rem; margin: 1.5rem -1rem 0; padding: 0 1rem 0.75rem;
+            overflow-x: auto; scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch; scroll-padding: 0 1rem;
+        }
+        .shot { flex: 0 0 68%; max-width: 16rem; margin: 0; scroll-snap-align: start; }
+        .shot img {
+            display: block; width: 100%; height: auto;
+            border-radius: 1rem; border: 1px solid var(--line); background: var(--box);
+        }
+        .shot figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; }
+        @media (min-width: 48rem) {
+            .shots {
+                display: grid; grid-template-columns: repeat(4, 1fr);
+                margin: 1.5rem 0 0; padding: 0; overflow: visible;
+            }
+            .shot { max-width: none; }
+        }
+
+        ol.steps { padding-left: 1.25rem; }
+        ol.steps li { margin: 0.5rem 0; }
+
+        .grid {
+            display: grid; gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        }
+        .card { background: var(--box); border-radius: 0.75rem; padding: 1rem 1.15rem; border-left: 4px solid var(--accent); }
+        .card p { margin: 0; }
+
+        ul.plain { padding-left: 1.25rem; }
+        ul.plain li { margin: 0.4rem 0; }
+
+        footer { margin-top: 3rem; padding: 1.5rem 0 2.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
+        footer nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 0.75rem; }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="wrap">
+            <div class="site-header">
+                <a href="/ppms/fabvision/"><img src="img/icon-192.png" alt="" width="192" height="192">FabVision AI</a>
+            </div>
+            <h1>Fabric to model photos</h1>
+            <p class="lead">Upload a photo of your fabric, pick the garment and style, and get a
+            catalog-ready model photo in a minute or two. No photographer, no studio, no model
+            booking.</p>
+            <div class="stores">
+                <a class="store play" href="https://play.google.com/store/apps/details?id=com.fabvision.ai">Get it on Google Play</a>
+                <!-- TODO: replace with the App Store link once the listing is live. -->
+                <span class="store apple" aria-disabled="true">App Store: coming soon</span>
+            </div>
+
+            <div class="shots" aria-label="Screenshots">
+                <figure class="shot">
+                    <img src="img/1-fabric-to-model.jpg" width="720" height="1565"
+                        alt="The FabVision AI gallery showing finished model photos of kurtis and sarees made from fabric photos">
+                    <figcaption>Fabric photo to model photo</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="img/2-pick-fabric-garment-style.jpg" width="720" height="1565" loading="lazy"
+                        alt="The Generate screen with a fabric selected, garment types to choose from, and slots to add dupatta and bottom fabric">
+                    <figcaption>Pick fabric, garment and style</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="img/3-one-design-many-colours.jpg" width="720" height="1565" loading="lazy"
+                        alt="Multi Model mode with 2 to 5 colours chosen for one design">
+                    <figcaption>One design, many colours</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="img/4-all-fabrics-one-place.jpg" width="720" height="1565" loading="lazy"
+                        alt="The Fabrics tab of the gallery with uploaded fabric photos ready to use">
+                    <figcaption>All your fabrics in one place</figcaption>
+                </figure>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <h2>Made for Indian textile sellers</h2>
+        <p>For manufacturers, wholesalers, boutiques and resellers who need good product photos
+        for every design and every colour, without a photoshoot for each one.</p>
+
+        <h2>How it works</h2>
+        <ol class="steps">
+            <li><strong>Upload your fabric.</strong> The app checks the photo and reads the
+            pattern, colour, texture and weave.</li>
+            <li><strong>Choose the garment and style.</strong> Saree, suit, kurti, lehenga,
+            sherwani and more, with the model, pose, theme and background you want.</li>
+            <li><strong>Generate.</strong> Your model photo is usually ready in a minute or two.</li>
+            <li><strong>Save or share.</strong> Save it to your phone, or share it on WhatsApp or
+            any other app.</li>
+        </ol>
+
+        <h2>What you can make</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>One design, many colours</h3>
+                <p>Show 2 to 5 colours of the same design on different models in one photo.</p>
+            </div>
+            <div class="card">
+                <h3>The complete look</h3>
+                <p>Add a dupatta, bottom, blouse or other matching fabric to the outfit.</p>
+            </div>
+            <div class="card">
+                <h3>Your choice of model</h3>
+                <p>Create new AI faces, reuse your saved faces, or upload your own photo.</p>
+            </div>
+            <div class="card">
+                <h3>Short videos</h3>
+                <p>Turn a single-model photo into a 4, 6 or 8 second video.</p>
+            </div>
+            <div class="card">
+                <h3>Catalog posters</h3>
+                <p>Put your photos on your own poster template and edit the text.</p>
+            </div>
+            <div class="card">
+                <h3>Everything in one place</h3>
+                <p>Your fabrics, photos and faces are saved to your account.</p>
+            </div>
+        </div>
+
+        <h2>Garments</h2>
+        <ul class="plain">
+            <li><strong>Women:</strong> Saree, Kurta, Kurti, Suit, Dress, Indo-Western, Shirt,
+            Lehenga, Stole</li>
+            <li><strong>Men:</strong> Suit, Shirt, Sherwani, Kurta, Stole</li>
+        </ul>
+
+        <h2>Credits</h2>
+        <ul class="plain">
+            <li>5 free credits when you sign up.</li>
+            <li>Uploading fabrics is free.</li>
+            <li>1 credit for a model photo, and 1 credit for a whole multi-model colour set.</li>
+            <li>Videos cost 1 credit per second. Posters are free.</li>
+            <li>No subscription. Buy credits only when you need more.</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>Questions or feedback? Write to us at
+        <a href="mailto:octodosolutions682@gmail.com">octodosolutions682@gmail.com</a>.</p>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <nav aria-label="Legal">
+                <a href="../privacypolicy/">Privacy Policy</a>
+                <a href="../deleteaccount/">Delete your account</a>
+                <a href="mailto:octodosolutions682@gmail.com">Contact</a>
+            </nav>
+            <p>FabVision AI is made by OctoDo Solutions Pvt. Ltd.</p>
+        </div>
+    </footer>
+</body>
+</html>
