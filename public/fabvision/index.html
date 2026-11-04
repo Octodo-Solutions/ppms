@@ -74,6 +74,27 @@
         .store.play { background: var(--brand); color: var(--brand-ink); }
         .store.apple { border: 2px dashed var(--line); color: var(--muted); }
 
+        /* Invite code from ?ref=CODE (ref.js). Hidden without one. */
+        .ref {
+            margin-top: 1.25rem; padding: 1rem 1.1rem; max-width: 30rem;
+            border: 1px solid var(--line); border-radius: 0.8rem; background: var(--box);
+        }
+        .ref[hidden] { display: none; }
+        .ref-label { margin: 0; color: var(--muted); font-size: 0.95rem; }
+        .ref-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin: 0.35rem 0 0.5rem; }
+        .ref-code {
+            margin: 0; font-size: 1.6rem; font-weight: 700; letter-spacing: 0.06em;
+            color: var(--heading); user-select: all; -webkit-user-select: all;
+        }
+        .ref-copy {
+            min-height: 2.75rem; padding: 0.5rem 1.1rem; border-radius: 0.6rem;
+            border: 2px solid var(--brand); background: transparent; color: var(--brand);
+            font: inherit; font-weight: 600; cursor: pointer;
+        }
+        .ref-copy:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+        .ref-hint { margin: 0; color: var(--muted); font-size: 0.95rem; }
+        .ref-status { margin: 0.4rem 0 0; color: var(--text); font-size: 0.95rem; min-height: 1.2em; }
+
         /* Phones: one swipeable row (only the row scrolls, never the page).
            Wider screens: all four side by side. */
         .shots {
@@ -124,8 +145,20 @@
             booking.</p>
             <div class="stores">
                 <a class="store play" href="https://play.google.com/store/apps/details?id=com.fabvision.ai">Get it on Google Play</a>
-                <!-- TODO: replace with the App Store link once the listing is live. -->
-                <span class="store apple" aria-disabled="true">App Store: coming soon</span>
+                <!-- Add the App Store badge here once the listing is live. No "coming soon":
+                     the iOS app shares this page as its Refer & earn link, and App Review
+                     opens it. -->
+            </div>
+
+            <div class="ref" id="ref-box" hidden>
+                <p class="ref-label">Your friend's invite code</p>
+                <div class="ref-row">
+                    <p class="ref-code" id="ref-code"></p>
+                    <button type="button" class="ref-copy" id="ref-copy">Copy code</button>
+                </div>
+                <p class="ref-hint">On Android, tap Get it on Google Play and the code is filled in for you.
+                On iPhone or iPad, copy the code and enter it under Have a referral code? when you sign up.</p>
+                <p class="ref-status" id="ref-status" role="status" aria-live="polite"></p>
             </div>
 
             <div class="shots" aria-label="Screenshots">
@@ -228,5 +261,6 @@
             <p>FabVision AI is made by OctoDo Solutions Pvt. Ltd.</p>
         </div>
     </footer>
+    <script type="module" src="ref.js"></script>
 </body>
 </html>

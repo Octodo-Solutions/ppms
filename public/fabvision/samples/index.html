@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Sample fabric photos for trying FabVision AI. Download one and upload it in the app.">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex">
+    <title>FabVision AI: sample fabric photos</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon-180.png">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --muted: #555b61;
+            --brand: #0D8B7D;
+            --brand-ink: #ffffff;
+            --accent: #F59E0B;
+            --heading: #0C1B2A;
+            --box: #f5f5f5;
+            --line: #dddddd;
+            --hero: #e9f5f3;
+            --brand-strong: #0b7569;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1720;
+                --text: #e6edf3;
+                --muted: #a3afba;
+                --brand: #3cc4b3;
+                --brand-ink: #0b1a1f;
+                --accent: #f5b041;
+                --heading: #d5e4ef;
+                --box: #17222d;
+                --line: #2c3c4a;
+                --hero: #12262b;
+                --brand-strong: #3cc4b3;
+            }
+        }
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--text);
+            background: var(--bg);
+            overflow-wrap: break-word;
+        }
+        .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1rem; }
+        a { color: var(--brand); }
+        h1, h2 { line-height: 1.25; }
+        h2 { color: var(--heading); font-size: 1.15rem; margin: 0 0 0.25rem; }
+
+        .site-header { display: flex; align-items: center; min-height: 3.5rem; }
+        .site-header a {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            color: var(--heading); font-weight: 700; font-size: 1.1rem; text-decoration: none;
+        }
+        .site-header img { width: 2.25rem; height: 2.25rem; border-radius: 22%; box-shadow: 0 0 0 1px var(--line); }
+
+        header.hero { background: var(--hero); padding: 1rem 0 1.5rem; border-bottom: 3px solid var(--accent); }
+        .hero h1 { font-size: clamp(1.7rem, 6vw, 2.4rem); color: var(--heading); margin: 1rem 0 0.5rem; }
+        .hero p { color: var(--muted); margin: 0; max-width: 40rem; }
+
+        ol.steps { padding-left: 1.25rem; margin: 1.5rem 0; }
+        ol.steps li { margin: 0.4rem 0; }
+
+        .samples {
+            display: grid; gap: 1.25rem; margin: 1.5rem 0 0;
+            grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+        }
+        .sample { margin: 0; background: var(--box); border-radius: 1rem; overflow: hidden; border: 1px solid var(--line); }
+        .sample img {
+            display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+            background: var(--line);
+        }
+        .sample figcaption { padding: 0.9rem 1rem 1rem; }
+        .tag {
+            display: inline-block; margin: 0 0 0.5rem; padding: 0.2rem 0.65rem;
+            border-radius: 0.75rem; border: 1px solid var(--brand-strong);
+            color: var(--brand-strong); font-size: 0.85rem; font-weight: 600; line-height: 1.4;
+        }
+        .sample p { color: var(--muted); margin: 0 0 0.75rem; font-size: 0.95rem; }
+        .download {
+            display: flex; align-items: center; justify-content: center;
+            min-height: 3rem; padding: 0.6rem 1.25rem; border-radius: 0.6rem;
+            background: var(--brand-strong); color: var(--brand-ink);
+            font-weight: 600; text-decoration: none;
+        }
+        .download:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+        .note { background: var(--box); border-left: 4px solid var(--accent); border-radius: 0.75rem; padding: 1rem 1.15rem; margin: 2rem 0 0; }
+        .note p { margin: 0; }
+
+        footer { margin-top: 3rem; padding: 1.5rem 0 2.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
+        footer nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="wrap">
+            <div class="site-header">
+                <a href="/ppms/fabvision/"><img src="../img/icon-192.png" alt="" width="192" height="192">FabVision AI</a>
+            </div>
+            <h1>Sample fabric photos</h1>
+            <p>No fabric photo on your phone? Download a sample and use it in the app.</p>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <ol class="steps">
+            <li>Tap <strong>Download</strong> under a photo. On iPhone or iPad you can also press and hold the photo and choose <strong>Save to Photos</strong>.</li>
+            <li>Open FabVision AI and choose the photo from your library when the app asks for a fabric photo.</li>
+        </ol>
+
+        <div class="samples">
+            <figure class="sample">
+                <img src="img/sample-suit.jpg" alt="Unstitched suit fabric: pink floral print with a striped bottom and a dupatta" width="1395" height="1600" loading="lazy">
+                <figcaption>
+                    <span class="tag">Good for a single model photo or a multi model colour set</span>
+                    <h2>Suit fabric</h2>
+                    <p>Printed cotton suit set in several colours, with bottom and dupatta.</p>
+                    <a class="download" href="img/sample-suit.jpg" download="fabvision-sample-suit.jpg">Download</a>
+                </figcaption>
+            </figure>
+            <!-- MORE SAMPLES: only photos you own. For each one, copy the card
+                 below out of this comment, put the photo in img/ (JPG, at least
+                 1000 px on the short side, up to 2000 px, under about 600 KB),
+                 and fill in the file name, its real width and height, the alt
+                 text, the label and the text. Labels in use:
+                   Good for a single model photo
+                   Good for a multi model colour set
+                   Good for a single model photo or a multi model colour set
+                 The grid adds a column per card on wider screens and stacks
+                 them on a phone. Keep this comment for the next one.
+
+            <figure class="sample">
+                <img src="img/sample-NAME.jpg" alt="WHAT THE PHOTO SHOWS" width="WIDTH" height="HEIGHT" loading="lazy">
+                <figcaption>
+                    <span class="tag">Good for a single model photo</span>
+                    <h2>TITLE</h2>
+                    <p>ONE LINE ABOUT THE FABRIC.</p>
+                    <a class="download" href="img/sample-NAME.jpg" download="fabvision-sample-NAME.jpg">Download</a>
+                </figcaption>
+            </figure>
+            -->
+        </div>
+
+        <div class="note">
+            <p>These photos are only for trying the app. Your own photos stay private to your account.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <nav>
+                <a href="/ppms/fabvision/">FabVision AI</a>
+                <a href="/ppms/privacypolicy/">Privacy policy</a>
+                <a href="/ppms/deleteaccount/">Delete your account</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
